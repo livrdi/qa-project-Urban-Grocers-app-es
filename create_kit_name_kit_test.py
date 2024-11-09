@@ -1,8 +1,7 @@
 import sender_stand_request
 import data
 
-# Create a user and retrieve auth token
-
+# Crea un usuario con auth token
 
 def create_new_user_token_on_success():
   user_response = sender_stand_request.post_new_user(data.user_body)
