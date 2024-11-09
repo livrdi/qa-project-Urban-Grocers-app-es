@@ -1,37 +1,36 @@
-import sender_stand_request
+import configuration
+import requests
 import data
 
 
-def create_new_user_token_on_success():
-    user_response = sender_stand_request.post_new_client_kit(data.user_body)
-    return user_response.json()["authToken"]
 
-def get_kit_body(name):
-    current_body = data.kit_body()
-    # Se cambia el valor del parámetro name
-    current_body["name"] = name
-    # Se devuelve un nuevo diccionario con el valor name requerido
-    return current_body
+def post_new_client_kit(body):
+    return requests.post(configuration.URL_SERVICE + configuration.CREATE_USER_PATH,  # coloca URL completa
+                         json=body,  # inserta el cuerpo de solicitud
+                         headers=data.headers)  # inserta los encabezados
 
-# prueba positiva
+response = post_new_client_kit(data.user_body)
+print(response.status_code)
 
-def positive_assert(kit_body, auth_token):
-  # El resultado de la solicitud para crear un nuevo kit se guarda en la variable response
-  user_response = sender_stand_request.post_new_kit(kit_body, auth_token)
+def get_kit_body():
+    return requests.get(configuration.URL_SERVICE + configuration.CREATE_KITS_PATH,
+                         json=kit_body,
+                         headers=data.headers)
+response = get_kit_body()
+print(response.status_code)
+print(response.json())
 
-  # Comprueba si el código de estado es 201
-  assert user_response.status_code == 201
+def kit_body():
+    return requests.get(name)
 
-  # Comprueba que el campo "name" del cuerpo de la respuesta coincide con el campo "name" del cuerpo de la solicitud
-  assert user_response.json()["name"] == kit_body["name"]
 
-#prueba negativa
-def negative_assert(kit_body, auth_token):
-  # El resultado de la solicitud para crear un nuevo kit se guarda en la variable response
-  user_response = sender_stand_request.post_new_kit(kit_body, auth_token)
+def post_new_kit(kit_body, auth_token):
+  headers = data.headers
+  headers["Authorization"] = f"Bearer {auth_token}"
 
-  # Comprueba si el código de estado es 400
-  assert user_response.status_code == 400
+  return requests.post(configuration.URL_SERVICE + configuration.CREATE_KITS_PATH,
+                       headers=headers,
+                       data=kit_body
 
 
 
