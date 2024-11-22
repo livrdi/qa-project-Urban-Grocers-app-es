@@ -1,6 +1,7 @@
 # Proyecto Urban Grocers 
 
-El proyecto qa-project-Urban-Grocers-app-es, consiste en realizar pruebas para el campo name de un kit de productos. Las tecnologias y tecnicas aplicadas para realizar este proyecto son las librerias de Python para ello, debemos seguir los siguientes requisitos:
+El proyecto qa-project-Urban-Grocers-app-es, consiste en realizar pruebas para el campo name de un kit de productos. Las tecnologias y tecnicas aplicadas para realizar este proyecto son las librerias de Python. 
+Para ellodebemos seguir los siguientes requisitos:
 
 1. Ejecutar la terminal "Pycharm"
 2. Abrir el proyecto qa-project-Urban-Grocers-app-es.
