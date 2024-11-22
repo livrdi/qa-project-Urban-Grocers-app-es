@@ -30,6 +30,6 @@ kit_body_test_8 = { }
 kit_body_test_9 = 123
 
 
-kit_body = {
+kit_body={
     "name": "a"
 }
